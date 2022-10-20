@@ -66,7 +66,6 @@ int main(void){
 
     _TIM2_IRQ_init(100);
 
-    ////printf("Hello There\n");
     for(;;);
 }
 
