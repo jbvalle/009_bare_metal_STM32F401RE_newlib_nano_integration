@@ -40,12 +40,12 @@ mkdeb:
 
 flash: FORCE
 	openocd -f  $(DEB_INTERFACE) -f $(DEB_TARGET) &
-	gdb-multiarch $(TARGET) -x $(DEB_DIR)/flash.gdb
+	gdb-multiarch $(TARGET) -x $(SUP_DIR)/flash.gdb
 	pkill openocd
 
 debug: FORCE
 	openocd -f  $(DEB_INTERFACE) -f $(DEB_TARGET) &
-	gdb-multiarch $(TARGET) -x $(DEB_DIR)/debug.gdb
+	gdb-multiarch $(TARGET) -x $(SUP)/debug.gdb
 
 clean: FORCE
 	rm -rf $(SRC_DIR)/$(OBJ_DIR) $(DEB_DIR)
