@@ -114,12 +114,12 @@ keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
-tabnext 4
+tabnext 1
 badd +17 src/main.c
 badd +1 inc/peripherals.h
 badd +1 startup/startup_STM32F401RE.c
-badd +0 Makefile
-badd +54 startup/linker_script_STM32F401RE.ld
+badd +43 startup/linker_script_STM32F401RE.ld
+badd +1 Makefile
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

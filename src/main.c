@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include <stdio.h>
 #include "peripherals.h"
 
 #define TIM2_IRQn 28
@@ -17,6 +16,7 @@ void wait_ms(int time){
         for(int j = 0; j < 1600; j++);
     }
 }
+
 void TIM2_handler(void){
     // Reset Status Register
     TIM2->TIMx_SR = 0;
@@ -67,9 +67,6 @@ int main(void){
     _TIM2_IRQ_init(100);
 
     ////printf("Hello There\n");
-
-
     for(;;);
-
 }
 
