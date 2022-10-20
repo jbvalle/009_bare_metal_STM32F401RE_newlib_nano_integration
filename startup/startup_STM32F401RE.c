@@ -79,7 +79,7 @@ void SPI4_handler                         (void)__attribute__((weak, alias("Defa
 /** Initialize Interrupt Vector **/
 __attribute__ ((section(".isr_vector")))
 void (* const fpn_vector[])(void) = {
-    (void (*)(void))(&__estack),
+    (void (*)(void))(&_estack),
     Reset_handler,
     NMI_handler,
     HardFault_handler,

@@ -21,7 +21,7 @@ LFLAGS = -nostdlib -T $(LD) -Wl,-Map=$(SUP_DIR)/main.map
 
 TARGET = $(DEB_DIR)/main.elf
 
-all:
+all: $(OBJ) $(TARGET)
 
 $(SRC_DIR)/$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | mkobj
 	$(CC) $(CFLAGS) -c -o $@ $^
@@ -29,7 +29,7 @@ $(SRC_DIR)/$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c | mkobj
 $(SRC_DIR)/$(OBJ_DIR)/%.o : $(SUP_DIR)/%.c | mkobj
 	$(CC) $(CFLAGS) -c -o $@ $^
 
-$(TARGET) : $(OBJ) | mkdir
+$(TARGET) : $(OBJ) | mkdeb
 	$(CC) $(LFLAGS) -o $@ $^
 
 mkobj:
