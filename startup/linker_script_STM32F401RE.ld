@@ -23,8 +23,28 @@ SECTIONS
         . = ALIGN(4);
         *(.text)
         *(.text.*)
+        *(.eh_frame)
+        *(.eh_frame*)
+        *(.init)
+        *(.init*)
+        *(.fini)
+        *(.fini*)
         *(.rodata)
         *(.rodata.*)
+        . = ALIGN(4);
+    }> FLASH
+
+    .ARM :
+    {
+        . = ALIGN(4);
+        *(.ARM*)
+        . = ALIGN(4);
+    }> FLASH
+
+    .debug :
+    {
+        . = ALIGN(4);
+        *(.debug*)
         . = ALIGN(4);
     }> FLASH
 
@@ -45,10 +65,17 @@ SECTIONS
     {
         . = ALIGN(4);
         _sbss = .;
+        /** Used for NewLib Syscalls.c **/
+        __bss_start__ = _sbss;
         *(.bss)
         *(.bss.*)
         *(COMMON)
         . = ALIGN(4);
         _ebss = .;
+        /** Used for NewLib Syscalls.c **/
+        __bss_end__ = _ebss;
+        . = ALIGN(4);
+        /** Used for NewLib Syscalls.c: brk() heap allocation **/
+        end = .;
     }> SRAM
 }

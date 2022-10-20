@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/Coding/044_bare_metal_STM32F401RE_RIOS
+cd ~/Coding/044_bare_metal_STM32F401RE_taskscheduler
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -11,6 +11,8 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd src/main.c
+tabnew
+tabnew
 tabnew
 tabnew
 tabrewind
@@ -72,10 +74,52 @@ keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
-tabnext 1
-badd +25 src/main.c
-badd +0 inc/peripherals.h
-badd +0 startup/startup_STM32F401RE.c
+tabnext
+edit startup/linker_script_STM32F401RE.ld
+argglobal
+balt startup/linker_script_STM32F401RE.ld
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 43 - ((26 * winheight(0) + 21) / 42)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 43
+normal! 0
+tabnext
+edit Makefile
+argglobal
+balt Makefile
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+tabnext 4
+badd +17 src/main.c
+badd +1 inc/peripherals.h
+badd +1 startup/startup_STM32F401RE.c
+badd +0 Makefile
+badd +54 startup/linker_script_STM32F401RE.ld
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
