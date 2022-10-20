@@ -16,7 +16,7 @@ void wait_ms(int time){
         for(int j = 0; j < 1600; j++);
     }
 }
-void TIM2_handler(){
+void TIM2_handler(void){
     // Reset Status Register
     TIM2->TIMx_SR = 0;
     // some action
