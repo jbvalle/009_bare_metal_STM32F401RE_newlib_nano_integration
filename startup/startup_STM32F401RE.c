@@ -9,6 +9,9 @@ extern uint32_t _ebss;
 
 extern int main(void);
 
+void __libc_init_array(void);
+
+
 void Reset_handler          (void);
 void NMI_handler            (void)__attribute__((weak, alias("Default_handler")));
 void HardFault_handler      (void)__attribute__((weak, alias("Default_handler")));
@@ -198,6 +201,8 @@ void Reset_handler(void){
 
         *bss_ptr++ = 0;
     }
+
+    __libc_init_array();
 
     main();
 }

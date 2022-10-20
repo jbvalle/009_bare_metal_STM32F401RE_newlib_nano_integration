@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdio.h>
 #include "peripherals.h"
 
 #define TIM2_IRQn 28
@@ -64,6 +65,10 @@ int main(void){
     GPIOA->GPIOx_MODER |=  (1 << (5 * 2));
 
     _TIM2_IRQ_init(100);
+
+    ////printf("Hello There\n");
+
+
     for(;;);
 
 }

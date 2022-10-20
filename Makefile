@@ -16,7 +16,7 @@ DEB_INTERFACE = /usr/share/openocd/scripts/interface/stlink-v2.cfg
 DEB_TARGET = /usr/share/openocd/scripts/target/stm32f4x.cfg
 
 MARCH = cortex-m4
-CFLAGS = -g -Wall -Wextra -mcpu=$(MARCH) -mthumb -O0 -I./$(INC_DIR)
+CFLAGS = -g -Wall -mcpu=$(MARCH) -mthumb -O0 -I./$(INC_DIR)
 LFLAGS = --specs=nano.specs -T $(LD) -Wl,-Map=$(DEB_DIR)/main.map
 
 TARGET = $(DEB_DIR)/main.elf

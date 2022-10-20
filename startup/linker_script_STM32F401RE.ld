@@ -13,7 +13,7 @@ SECTIONS
     .isr_vector :
     {
         . = ALIGN(4);
-        *(.isr_vector)
+        KEEP(*(.isr_vector))
         . = ALIGN(4);
     }> FLASH
 
@@ -26,9 +26,7 @@ SECTIONS
         *(.eh_frame)
         *(.eh_frame*)
         *(.init)
-        *(.init*)
         *(.fini)
-        *(.fini*)
         *(.rodata)
         *(.rodata.*)
         . = ALIGN(4);
@@ -57,6 +55,8 @@ SECTIONS
         _sdata = .;
         *(.data)
         *(.data.*)
+        *(.init_array)
+        *(.fini_array)
         . = ALIGN(4);
         _edata = .;
     }> SRAM AT> FLASH
