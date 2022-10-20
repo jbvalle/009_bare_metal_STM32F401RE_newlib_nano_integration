@@ -50,6 +50,10 @@ debug: FORCE
 clean: FORCE
 	rm -rf $(SRC_DIR)/$(OBJ_DIR) $(DEB_DIR)
 
+edit: FORCE
+	vim -S Session.vim
+
+
 FORCE: 
 
 .PHONY = FORCE clean mkobj mkdeb flash
