@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdio.h>
 #include "peripherals.h"
 
 #define TIM2_IRQn 28
