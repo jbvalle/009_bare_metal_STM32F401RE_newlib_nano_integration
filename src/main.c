@@ -5,6 +5,9 @@
 #define TIM2_IRQn 28
 #define NVIC_ISER_WIDTH 32
 
+/** RDIMON NEWLIB NANO SEMIHOST **/
+extern void initialise_monitor_handles();
+
 
 RCC_t       * const RCC     = (RCC_t    *)0x40023800;
 GPIOx_t     * const GPIOA   = (GPIOx_t  *)0x40020000;
@@ -59,7 +62,10 @@ void _TIM2_IRQ_init(uint32_t period_ms){
     TIM2->TIMx_CR1 |= 1;
 }
 
+
 int main(void){
+
+    initialise_monitor_handles();
 
     RCC->RCC_AHB1ENR |= 1;
     GPIOA->GPIOx_MODER &= ~(3 << (5 * 2));
