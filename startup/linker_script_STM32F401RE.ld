@@ -76,6 +76,7 @@ SECTIONS
         __bss_end__ = _ebss;
         . = ALIGN(4);
         /** Used for NewLib Syscalls.c: brk() heap allocation **/
-        end = .;
+        __end__ = .;
+        end = __end__;
     }> SRAM
 }

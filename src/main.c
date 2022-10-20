@@ -26,6 +26,8 @@ void TIM2_handler(void){
     TIM2->TIMx_SR = 0;
     // some action
     GPIOA->GPIOx_ODR ^= (1 << 5);
+
+    printf("TIM2 Handler Called\n");
 }
 
 void global_enable_IRQ_NVIC(void){
@@ -72,7 +74,10 @@ int main(void){
     GPIOA->GPIOx_MODER |=  (1 << (5 * 2));
 
     _TIM2_IRQ_init(100);
+        
 
-    for(;;);
+    for(;;){
+
+    }
 }
 

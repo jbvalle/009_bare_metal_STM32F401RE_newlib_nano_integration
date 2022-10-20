@@ -47,6 +47,12 @@ debug: FORCE
 	openocd -f  $(DEB_INTERFACE) -f $(DEB_TARGET) &
 	gdb-multiarch $(TARGET) -x $(SUP_DIR)/debug.gdb
 
+semi_host: FORCE
+	openocd -f  $(DEB_INTERFACE) -f $(DEB_TARGET) &
+
+semi_client: FORCE
+	gdb-multiarch $(TARGET) -x $(SUP_DIR)/semi.gdb
+
 clean: FORCE
 	rm -rf $(SRC_DIR)/$(OBJ_DIR) $(DEB_DIR)
 
