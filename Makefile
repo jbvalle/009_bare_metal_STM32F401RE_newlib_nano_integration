@@ -45,7 +45,7 @@ flash: FORCE
 
 debug: FORCE
 	openocd -f  $(DEB_INTERFACE) -f $(DEB_TARGET) &
-	gdb-multiarch $(TARGET) -x $(SUP)/debug.gdb
+	gdb-multiarch $(TARGET) -x $(SUP_DIR)/debug.gdb
 
 clean: FORCE
 	rm -rf $(SRC_DIR)/$(OBJ_DIR) $(DEB_DIR)
