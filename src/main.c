@@ -5,7 +5,6 @@
 #define TIM2_IRQn 28
 #define NVIC_ISER_WIDTH 32
 
-#define DEBUG_PRINT 0
 
 /** RDIMON NEWLIB NANO SEMIHOST **/
 extern void initialise_monitor_handles();
