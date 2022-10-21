@@ -5,6 +5,8 @@
 #define TIM2_IRQn 28
 #define NVIC_ISER_WIDTH 32
 
+#define DEBUG_PRINT 0
+
 /** RDIMON NEWLIB NANO SEMIHOST **/
 extern void initialise_monitor_handles();
 
@@ -27,7 +29,11 @@ void TIM2_handler(void){
     // some action
     GPIOA->GPIOx_ODR ^= (1 << 5);
 
+    #if DEBUG_PRINT
+
     printf("TIM2 Handler Called\n");
+
+    #endif
 }
 
 void global_enable_IRQ_NVIC(void){
@@ -67,7 +73,9 @@ void _TIM2_IRQ_init(uint32_t period_ms){
 
 int main(void){
 
+    #if DEBUG_PRINT
     initialise_monitor_handles();
+    #endif
 
     RCC->RCC_AHB1ENR |= 1;
     GPIOA->GPIOx_MODER &= ~(3 << (5 * 2));
