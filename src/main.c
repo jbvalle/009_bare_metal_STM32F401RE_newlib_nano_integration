@@ -28,8 +28,9 @@ void TIM2_handler(void){
     // some action
     GPIOA->GPIOx_ODR ^= (1 << 5);
 
-
-    printf("TIM2 Handler Called\n");
+    #if DEB_SEMI
+        printf("TIM2 Handler Called\n");
+    #endif
 }
 
 void global_enable_IRQ_NVIC(void){
@@ -69,8 +70,9 @@ void _TIM2_IRQ_init(uint32_t period_ms){
 
 int main(void){
 
-    initialise_monitor_handles();
-    
+    #if DEB_SEMI
+        initialise_monitor_handles();
+    #endif
 
     RCC->RCC_AHB1ENR |= 1;
     GPIOA->GPIOx_MODER &= ~(3 << (5 * 2));
