@@ -32,6 +32,7 @@ SECTIONS
         . = ALIGN(4);
     }> FLASH
 
+    /*
     .ARM :
     {
         . = ALIGN(4);
@@ -45,6 +46,7 @@ SECTIONS
         *(.debug*)
         . = ALIGN(4);
     }> FLASH
+    */
 
     . = ALIGN(4);
     _sidata = LOADADDR(.data);
