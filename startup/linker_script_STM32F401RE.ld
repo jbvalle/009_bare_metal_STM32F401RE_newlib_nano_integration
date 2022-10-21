@@ -31,6 +31,7 @@ SECTIONS
         *(.rodata.*)
         . = ALIGN(4);
     }> FLASH
+    /*
 
     .ARM :
     {
@@ -46,6 +47,7 @@ SECTIONS
         . = ALIGN(4);
     }> FLASH
 
+    */
     . = ALIGN(4);
     _sidata = LOADADDR(.data);
 
